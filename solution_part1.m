@@ -14,8 +14,9 @@ for frame = 1:num_frames
     vid_gray_data(:, :, frame) = im2double(rgb2gray(vid_data(frame).cdata(end-119:end, end-239:end , :)));
     figure;
     imshow(mat2gray(vid_gray_data(:, :, frame)));
-    title(['Frame #', num2str(frame)]);
+%     title(['Frame #', num2str(frame)]);
     axis tight;
+    saveas(gcf,'./sample.png');
 end
 
 %% Part b - Making the coded snapshot from the read video frames
@@ -26,7 +27,7 @@ noisy_coded_snapshot = coded_snapshot + ((noise_std/255).*randn(req_ht, req_wd))
 % noisy_coded_snapshot = coded_snapshot + normrnd(0, noise_std/255, req_ht, req_wd);
 figure;
 imshow(mat2gray(noisy_coded_snapshot));
-title(["Coded snapshot with noise for T = " num2str(num_frames)]);
+title(['Coded snapshot with noise for T = ' num2str(num_frames)]);
 saveas(gcf, './Figures/Experiment_1/reconstructed/T_3/coded_snapshot.png');
 
 %% Part c - Reconstruction of the video from the coded snapshot(noisy) for 3 frames
@@ -69,7 +70,7 @@ noisy_coded_snapshot = coded_snapshot + ((noise_std/255).*randn(req_ht, req_wd))
 % noisy_coded_snapshot = coded_snapshot + normrnd(0, noise_std/255, req_ht, req_wd);
 figure;
 imshow(mat2gray(noisy_coded_snapshot));
-title(["Coded snapshot with noise for T = " num2str(num_frames)]);
+title(['Coded snapshot with noise for T = ' num2str(num_frames)]);
 saveas(gcf, './Figures/Experiment_1/reconstructed/T_5/coded_snapshot.png');
 
 patch_size = 8;
@@ -113,7 +114,7 @@ noisy_coded_snapshot = coded_snapshot + ((noise_std/255).*randn(req_ht, req_wd))
 % noisy_coded_snapshot = coded_snapshot + normrnd(0, noise_std/255, req_ht, req_wd);
 figure;
 imshow(mat2gray(noisy_coded_snapshot));
-title(["Coded snapshot with noise for T = " num2str(num_frames)]);
+title(['Coded snapshot with noise for T = ' num2str(num_frames)]);
 saveas(gcf, './Figures/Experiment_1/reconstructed/T_7/coded_snapshot.png');
 
 patch_size = 8;
@@ -159,9 +160,9 @@ noisy_coded_snapshot = coded_snapshot + ((noise_std/255).*randn(ht, wd));
 % noisy_coded_snapshot = coded_snapshot + normrnd(0, noise_std/255, req_ht, req_wd);
 figure;
 imshow(mat2gray(noisy_coded_snapshot));
-title(["Coded snapshot with noise for T = " num2str(num_frames)]);
+title(['Coded snapshot with noise for T = ' num2str(num_frames)]);
 saveas(gcf, './Figures/Experiment_2/reconstructed/coded_snapshot.png');
-
+%%
 patch_size = 8;
 eps = 3*(noise_std/255)*8;
 tic;
@@ -171,7 +172,7 @@ toc;
 for frame = 1:num_frames
     figure;
     imshow(mat2gray(reconstructed_x(:, :, frame)));
-    title(['Reconstructed frame#' num2str(frame)]);
+    title(['Reconstructed frame #' num2str(frame)]);
     axis tight;
     saveas(gcf, ['./Figures/Experiment_2/reconstructed/', num2str(frame), '.png']);
 end
