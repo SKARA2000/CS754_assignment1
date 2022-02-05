@@ -53,7 +53,7 @@ function [x] = omp(A, b, eps)
     x = zeros(size(A, 2), 1);
     T = [];
     i = 0;
-    while((norm(r)^2 > eps) && (i < 64))
+    while((norm(r) > eps) && (i < 64))
         % Selecting the column with the maximal dot product with r
         nA = sqrt(sum(A.*A, 1));
         numerator = sum(A.*repmat(r, 1, size(A, 2)), 1);

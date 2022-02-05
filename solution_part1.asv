@@ -65,7 +65,7 @@ end
 
 code_data = randi([0,1], req_ht, req_wd, num_frames);
 coded_snapshot = sum(code_data.*vid_gray_data, 3);
-noisy_coded_snapshot = coded_snapshot + ((noise_std/255).*randn(req_ht, req_wd));
+noisy_coded_snapshot = coded_snapshot + (sqrt(noise_std/255).*randn(req_ht, req_wd));
 % noisy_coded_snapshot = coded_snapshot + normrnd(0, noise_std/255, req_ht, req_wd);
 figure;
 imshow(mat2gray(noisy_coded_snapshot));
@@ -109,7 +109,7 @@ end
 
 code_data = randi([0,1], req_ht, req_wd, num_frames);
 coded_snapshot = sum(code_data.*vid_gray_data, 3);
-noisy_coded_snapshot = coded_snapshot + ((noise_std/255).*randn(req_ht, req_wd));
+noisy_coded_snapshot = coded_snapshot + (sqrt(noise_std/255).*randn(req_ht, req_wd));
 % noisy_coded_snapshot = coded_snapshot + normrnd(0, noise_std/255, req_ht, req_wd);
 figure;
 imshow(mat2gray(noisy_coded_snapshot));
@@ -155,7 +155,7 @@ end
 noise_std = 2;
 code_data = randi([0,1], ht, wd, num_frames);
 coded_snapshot = sum(code_data.*vid_gray_data, 3);
-noisy_coded_snapshot = coded_snapshot + ((noise_std/255).*randn(ht, wd));
+noisy_coded_snapshot = coded_snapshot + (sqrt(noise_std/255).*randn(ht, wd));
 % noisy_coded_snapshot = coded_snapshot + normrnd(0, noise_std/255, req_ht, req_wd);
 figure;
 imshow(mat2gray(noisy_coded_snapshot));
